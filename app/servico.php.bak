@@ -1,0 +1,483 @@
+<?php
+session_start();
+require_once '../loader.php';
+$site = new Site();
+$site->getMeta();
+
+$modulo_aparencia = new ModuloAparencia();
+$modulo_aparencia->getModuloaparencia();
+
+$topo = new Modulo1();
+$topo->getModulo1();
+
+$menu = new Modulo2();
+$menu->getModulo2();
+
+$sobre = new Modulo3();
+$sobre->getModulo3();
+
+$portfolio = new Modulo7();
+$portfolio->getModulo7();
+
+$contato = new Modulo9();
+$contato->getModulo9();
+
+$contatos = new Contato();
+$contatos->getContato();
+
+$blog = new Modulo10();
+$blog->getModulo10();
+
+$pagina_id = intval($_GET['id']);
+$pagina = new Pagina();
+$pagina->pagina_id = "$pagina_id";
+$pagina->getPagina();
+
+$portfolio_id = intval($_GET['id']);
+$categoria_portfolio = new Area1();
+$categoria_portfolio->getAreas1();
+
+$horario = new Horario();
+$horario->db = new DB;
+$horario->getAreas();
+
+$_SESSION['dv_nome'] = $servico_nome;
+$_SESSION['dv_email'] = $servico_email;
+$_SESSION['dv_cel'] = $servico_icon;
+$_SESSION['dv_data'] = $dataservico;
+$_SESSION['dv_horario'] = $servico_horario;
+$_SESSION['dv_mensagem'] = $mensagem;
+
+?>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
+<link rel="apple-touch-startup-image" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)" href="images/apple-touch-startup-image-640x1096.png">
+<meta name="author" content="JM Tecnologia" />
+<meta name="description" content="biotic - mobile and tablet web app template" />
+<meta name="keywords" content="mobile css template, mobile html template, jquery mobile template, mobile app template, html5 mobile design, mobile design" />
+<title><?= $site->site_meta_titulo ?></title>
+<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,700,900' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="css/themes/default/jquery.mobile-1.4.5.css">
+<link type="text/css" rel="stylesheet" href="style.css" />
+<link type="text/css" rel="stylesheet" href="css/colors/yellow.css" />
+<link type="text/css" rel="stylesheet" href="css/swipebox.css" />
+<script type="text/javascript">
+function validaForm(frm) {
+/*
+o parâmetro frm desta função significa: this.form,
+pois a chamada da função - validaForm(this) foi
+definida na tag form.
+*/
+    
+	var data = document.getElementById('servico_data').value;
+
+	var objDate = new Date();
+	objDate.setYear(data.split("/")[2]);
+	objDate.setMonth(data.split("/")[1]  - 1);//- 1 pq em js é de 0 a 11 os meses
+	objDate.setDate(data.split("/")[0]);
+
+	if(objDate.getTime() > new Date().getTime()){
+		alert("A data de agendamento não pode ser maior que a data atual");
+		document.getElementById('servico_data').focus();
+	  return false;
+   }
+   
+	//Verifica se o campo nome foi preenchido e
+    //contém no mínimo três caracteres.
+    if(frm.servico_nome.value == """ || frm.servico_nome.value == null || frm.servico_nome.value.lenght < 3) {
+        //É mostrado um alerta, caso o campo esteja vazio.
+        alert("Por favor, informe o seu nome.");
+        //Foi definido um focus no campo.
+        frm.servico_nome.focus();
+        //o form não é enviado.
+        return false;
+    }
+    //o campo e-mail precisa de conter: "@", "." e não pode estar vazio
+    if(frm.email.value.indexOf("@") == -1 ||
+      frm.email.valueOf.indexOf(".") == -1 ||
+      frm.email.value == "" ||
+      frm.email.value == null) {
+        alert("Por favor, indique um e-mail válido.");
+        frm.email.focus();
+        return false;
+    }
+    // O utilizador necessita de selecionar um dos dois
+    //radio buttons: Masculino ou Feminino.
+    escolhaSexo = -1; //valor negativo default (padrão) que significa que nada foi escolhido ainda.
+    //No bloco de código abaixo foi criado um ciclo entre
+    //os radios button com o mesmo nome (sexo)
+    for(x = frm.sexo.lenght -1; x > -1; x--) {
+        /*
+        x = frm.sexo.lenght -1 é a mesma coisa que: x = 2-
+        1, que resulta em 1.
+        x > -1 significa que o valor de x não pode ser igual a -1 e
+        sim maior, porque -1 significa que nada foi escolhido.
+        x-- significa que há um decremento no valor x, é algo como:
+        x = 1, x= 0 e pára pois x não pode ser -1.
+        */
+        if(frm.sexo[x].checked) { //checked quer dizer selecionado,
+           //então verifica se o primeiro (0) ou o
+           //segundo (1) radio button foi selecionado (checked).
+           escolhaSexo = x; //atribui à variável escolhaSexo o valor X.
+        }
+    }
+    //se nenhuma das opções (masculino ou feminino) forem
+    //escolhidas, mostra um alerta e cancela o envio.
+    if(escolhaSexo == -1) {
+        alert("qual o seu sexo?");
+        frm.sexo[0].focus();
+        return false;
+    }
+    /* valida a profissão:
+    O utilizador tem de escolher uma entre as três opções
+    (Programador, Designer e Tester).
+    */
+    if(frm.prof.value == "" || from.prof.value == "Todas") {
+        alert("De momento, precisamos de especialistas nas três áreas indicadas");
+        frm.prof.focus();
+        return false;
+    }
+    //Valida a textArea, que é como validar um campo de texto simples.
+    if(frm.sobre.value == "" || frm.sobre.value == null) {
+        alert("Por favor, conte-nos um pouco sobre si.");
+        frm.sobre.focus();
+        return false;
+    }
+}
+</script>
+		<script type="text/javaScript">
+		function Trim(str){
+			return str.replace(/^\s+|\s+$/g,"");
+		}
+		</script> 
+		<script>
+		function SomenteNumero(event)
+		{
+			if (event.keyCode < 48 || event.keyCode > 57)
+				return false;
+		}
+		</script>
+			<script type="text/javascript">
+			$(document).ready(function(){
+				$("input.servico_data").mask("99/99/9999");
+					$("input.cpf").mask("999.999.999-99");
+					$("input.cep").mask("99.999-999");
+			});
+			</script> 
+<script>
+function goBack() {
+    window.history.back();
+}
+</script>
+<SCRIPT LANGUAGE="JavaScript">
+
+	function campo_numerico (){
+
+			if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;
+
+	}
+	
+	function valida()
+	{
+		var now = new Date();
+		now.format("dd/mm/yyyy");
+		if (agenda.servico_data.value < now)
+		{
+		alert("A data de agendamento não pode ser menor que a data atual!");
+		agenda.servico_data.focus();
+		return false;
+		}		
+	}
+	function valida2()
+	{
+		if (agenda.servico_nome.value == "" || agenda.servico_nome.value == null || agenda.servico_nome.value.lenght < 3)
+		{
+		alert("Informe o seu nome!");
+		agenda.servico_nome.focus();
+		return false;
+		}
+
+		if (agenda.servico_email.value.indexOf("@") == -1 ||
+		  agenda.servico_email.valueOf.indexOf(".") == -1 ||
+		  agenda.servico_email.value == "" ||
+		  agenda.servico_email.value == null) {
+			alert("Por favor, indique um e-mail válido.");
+			agenda.servico_email.focus();
+			return false;
+		}
+				
+		if (agenda.servico_icon.value == "" || agenda.servico_icon.value == null || agenda.servico_icon.value.lenght < 11)
+		{
+		alert("Informe o seu celular com DDD! Deve ter apenas números e os 11 dígitos!");
+		agenda.servico_icon.focus();
+		return false;
+		}
+		
+		if (agenda.servico_horario.value == "" || agenda.servico_horario.value == null || agenda.servico_horario.value == "Horario")
+		{
+		alert("Escolha um horário para o agendamento!");
+		agenda.servico_horario.focus();
+		return false;
+		}
+		
+	}
+</script>		
+</head>
+<body>
+
+<div data-role="page" id="about" class="secondarypage" data-theme="b">
+
+    <div data-role="header" data-position="fixed">
+        <div class="nav_left_button"><a href="#" class="nav-toggle"><span></span></a></div>
+        <div class="nav_center_logo"><?= $site->site_meta_titulo ?></div>
+        <div class="nav_right_button"><a href="#right-panel"><img src="images/icons/white/user.png" alt="" title="" /></a></div>
+        <div class="clear"></div>
+    </div><!-- /header -->
+
+    <div role="main" class="ui-content">
+    
+       <div class="pages_maincontent">
+              <h2 class="page_title"><?= stripslashes($pagina->pagina_nome) ?></h2> 
+              <div class="page_content"> 
+				<div align="center" class="imgBorder" style="min-height: 100px; margin-top:5px">
+				<img src="../images/blog/<?= $pagina->pagina_imagem ?>" alt="" class="img-responsive" /> 
+				</div>              
+					<h2 class="page_title">Descrição do Serviço:</h2>
+					<p><?= $pagina->pagina_descricao ?></p>
+					</br>
+					<h2 class="page_title">Agendamento On line</h2>
+					<p>Envie seus dados, data e horário para verificarmos a disponibilidade, para melhor atendê-lo!</p>
+							    <!--<?php
+                                    if (isset($_POST['servico_email']) && !empty($_POST['servico_email'])) {
+                                       
+										date_default_timezone_set('America/Sao_Paulo');
+									  //envio o charset para evitar problemas com acentos
+									  header("Content-Type: text/html; charset=UTF-8");
+										$data = date('d/m/Y');
+									    $dataservico = date("d/m/Y", strtotime($_POST['servico_data']));
+										$servico_nome = addslashes($_POST['servico_nome']);
+										$servico_icon = $_POST['servico_icon'];
+										$servico_descricao = addslashes($_POST['servico_descricao']);
+										$servico_email = $_POST['servico_email'];
+										$servico_pagina = $_POST['servico_pagina'];
+										$servico_horario = $_POST['servico_horario'];
+										$servico_data = date("d/m/Y", strtotime($_POST['servico_data']));
+										$servico_status = $_POST['servico_status'];
+										$servico_profissional = $_POST['servico_profissional'];
+										$mensagem = $_POST['mensagem'];
+										
+										$_SESSION['dv_nome'] = $servico_nome;
+										$_SESSION['dv_email'] = $servico_email;
+										$_SESSION['dv_cel'] = $servico_icon;
+										$_SESSION['dv_data'] = $dataservico;
+										$_SESSION['dv_horario'] = $servico_horario;
+										$_SESSION['dv_mensagem'] = $mensagem;
+										
+										global $servico_nome, $servico_email;
+										
+										$erro=0;
+										
+										if (empty($servico_nome)){
+										   $erro=1;
+												  echo '<script>alert("O campo *Seu Nome* é Obrigatório!");</script>';
+												  echo "<script>location.href='servico.php?id=$servico_pagina';</script>";
+												  //echo '<script>location.href="javascript:history.go(-1)";</script>';
+										   exit;
+										   }
+										if(strlen($servico_icon) < 11){
+										   $erro=1;
+												  echo '<script>alert("O seu *número do WhatsApp* deve ter o DDD e o numero, que são 11 números! Exemplo: 31986407398.");</script>';
+												  echo "<script>location.href='servico.php?id=$servico_pagina';</script>";
+												  //echo '<script>location.href="javascript:history.go(-1)";</script>';
+										   exit;
+										   }
+										if ($dataservico < $data){
+										   $erro=1;
+												  echo '<script>alert("A data de agendamento não pode ser menor que a data atual! Escolha outra data.");</script>';
+												  echo "<script>location.href='servico.php?id=$servico_pagina';</script>";
+												  //echo '<script>location.href="javascript:history.go(-1)";</script>';
+										   exit;
+										   }	
+										   
+										$servico = new Servico();
+										$servico->db = new DB;
+										$servico->servico_nome = $servico_nome;
+										$servico->servico_icon = $servico_icon;
+										$servico->servico_descricao = $servico_descricao;
+										$servico->servico_email = $servico_email;
+										$servico->servico_horario = $servico_horario;
+										$servico->servico_data = $servico_data;
+										$servico->servico_status = $servico_status;
+										$servico->servico_profissional = $servico_profissional;
+										$servico->gravar();
+										
+										                                    
+										require_once '../plugin/email/email.php';
+										global $mail;
+										$smtp = new Smtpr();
+										$smtp->getSmtp();
+										$mail->Port = $smtp->smtp_port;
+										$mail->Host = $smtp->smtp_host;
+										$mail->Username = $smtp->smtp_username;
+										$mail->From = $smtp->smtp_username;
+										$mail->Password = $smtp->smtp_password;
+										$mail->FromName = $smtp->smtp_fromname;
+										$mail->Subject = utf8_decode("Agendamento (Disponibilidade) - " . $site->site_meta_titulo);
+										$mail->AddBCC($servico->servico_email);
+										$mail->AddCC($smtp->smtp_username);
+										$mail->AddAddress($smtp->smtp_username);
+										
+										$promocao = $_POST['promocao'];
+
+
+										$mail->AddReplyTo($servico_email);
+										$body = "<b>Data do envio: </b> $data <br />";
+										$body .= "<b>Nome:</b> $servico_nome <br />";
+										$body .= "<b>Celular (WhatsApp):</b> $servico_icon <br />";
+										$body .= "<b>E-mail:</b> $servico_email <br />";
+										$body .= "<b>Serviço: </b>$servico_descricao <br />";
+										$body .= "<b>Profissional: </b>$servico_profissional <br />";
+										$body .= "<b>Data desejada: </b>$servico_data <br />";
+										$body .= "<b>Horário desejado: </b>$servico_horario <br />";
+										$body .= "<b>Mensagem: </b>$mensagem <br />";
+										$body .= "Nós agradecemos o seu contato! Vamos verificar a disponibilidade e logo retornaremos, confirmando ou reagendando o seu horário.<br />";
+										$body .= "Atenciosamente, <br /><br />";
+										$body .= "$site->site_meta_titulo <br />";
+										$body .= "$contatos->contato_telefone1<br />";
+										$body .= "$contatos->contato_endereco<br /><br />";
+																				
+										$mail->Body = nl2br($body);
+										
+									  $mysqli = new mysqli('mysql.hostinger.com.br', 'u421847002_srbla', '090979', 'u421847002_srbla');
+									  $horario = filter_input(INPUT_POST, 'servico_horario');
+									  $servico = filter_input(INPUT_POST, 'servico_descricao');
+									  $status = 1;
+									  $sql = "SELECT * FROM `servico` WHERE `servico_data` = '{$dataservico}' AND `servico_horario` = '{$horario}' AND `servico_descricao` = '{$servico}' AND `servico_status` = '{$status}'"; //monto a query
+									  $query = $mysqli->query( $sql ); //executo a query
+									  
+										
+										if ($mail->Send()) {
+												  if( $query->num_rows > 0 ) {//se retornar algum resultado
+												echo '<script>alert("ATENÇÃO! Já existe uma confirmação de agendamento nessa data e horário! Mesmo assim, vamos verificar a disponibilidade!");</script>';
+												echo "<script>location.href='confirmaragenda.php';</script>";
+												//echo "<script>location.href='https://api.whatsapp.com/send?phone=55$contatos->contato_telefone3&text=Ola, me chamo $servico_nome, tudo bem? Acabei de enviar um agendamento e gostaria de verificar a disponibilidade conforme enviado: Status agendamento: NÃO CONFIRMADO | Meu Nome: $servico_nome | Meu Celular: $servico_icon | Serviço solicitado: $servico_descricao | Data: $servico_data | Horário: $servico_horario | Observação: $mensagem. Teria disponibilidade?';</script>";
+												//echo '<div align="center"> <a href="javascript:history.go(-1)"><button>VOLTAR</button></a></b></br></div>';
+												//echo '<script>location.href="javascript:history.go(0)";</script>';
+												//echo '<script>alert("Desculpe! Mas já existe uma confirmação de agendamento nessa data e horário! Escolha outro horário ou data para verificarmos a disponibilidade!");</script>';
+												//echo '<script>location.href="javascript:history.go(0)";</script>';
+												//return false;
+												}											
+											//echo "<div class='alert alert-success' id='msg_alert'> <h3><font style='color:#009900;font-weight:bold;'><strong>Obrigado !</strong> Sua mensagem foi entregue com sucesso. Vamos verificar e confirmar a disponibilidade de horário e logo retornaremos!</font></h3></div>";
+											echo '<script>alert("Seu agendamento foi entregue com sucesso. Vamos verificar a disponibilidade! Clique em OK para nos notificar pelo WhatsApp!");</script>';
+											//echo '<script>location.href="javascript:history.go(-1)";</script>';
+												echo "<script>location.href='agenda.php';</script>";
+											echo "<script>location.href='https://api.whatsapp.com/send?phone=55$contatos->contato_telefone3&text=Ola, me chamo $servico_nome, tudo bem? Acabei de enviar um agendamento e gostaria de verificar a disponibilidade conforme enviado: Status agendamento: NÃO CONFIRMADO | Meu Nome: $servico_nome | Meu Celular: $servico_icon | Serviço solicitado: $servico_descricao | Data: $servico_data | Horário: $servico_horario | Observação: $mensagem. Teria disponibilidade?';</script>";
+											//echo "<script>location.href='servico.php?id=$servico_pagina';</script>";
+                                        } else {
+                                            echo "<p class='alert alert-danger' id='msg_alert'> Erro ao enviar  Mensagem: $mail->ErrorInfo</p>";
+                                        }
+                                    }
+                                    ?> --> 
+									<div class="contactform">
+									<form class="cmxform" method="post" action="confirmaragenda.php" id="contactfrm" role="form" name="agenda" >
+                                            <div>
+												<label>Seu Nome:</label>
+                                                <input type="text" name="servico_nome" id="servico_nome" required value="<?php echo $_SESSION['nome']?>" style="text-transform:uppercase" placeholder="Informe seu nome" title="Por favor informe seu nome"/>
+                                            </div>
+                                            <div>
+												<label>Seu E-mail:</label>
+                                                <input type="email" name="servico_email" id="servico_email" required value="<?php echo $_SESSION['email']?>" placeholder="Informe seu email" title="Por favor informe um endereço de email válido"/>
+                                            </div>											
+                                            <div>
+                                                <label>Informe o número do WhatsApp</label>
+                                                <label>Obs.: Somente os números com DDD</label>
+                                                <input type="text" name="servico_icon" id="servico_icon" required value="<?php echo $_SESSION['telefone']?>" maxlength="11" onkeypress="return event.charCode >= 48 && event.charCode <= 57" placeholder="Exemplo: 31986407398" title="Por favor informe o celular"/>
+                                            </div>
+											
+                                            <div>
+                                                <label>Escolha a data desejada</label>
+                                                <input type="date" name="servico_data" id="servico_data" required maxlength="10" value="<?php isset($_SESSION['dv_data']) ? print $_SESSION['dv_data'] : false; ?>" placeholder="Informe a data" title="Por favor escolha uma data"/>
+                                            </div>
+											
+                                            <div>
+                                                <label>Escolha um horário desejado</label>
+                                                <select data-placeholder="Obrigatório selecionar a área" id="servico_horario" required name="servico_horario" tabindex="2" >
+                                                    <option value="">Selecione um horário</option>
+                                                    <?php if (isset($horario->db->data[0])): ?>
+                                                        <?php foreach ($horario->db->data as $categoria): ?>
+                                                            <option value="<?= $categoria->horario_nome ?>"><?= $categoria->horario_nome ?></option>
+                                                        <?php endforeach; ?>
+                                                    <?php endif; ?>
+                                                </select>
+                                            </div>											
+											
+                                            <div>
+												<label>Mensagem(Opcional)</label>
+                                                <input type="text" name="mensagem" id="mensagem" value="" placeholder="Mensagem Opcional" title="Mensagem"/>
+                                            </div>
+
+                                            <div class="result"></div>
+											<input type="hidden" name="servico_descricao" style="text-transform:uppercase" value="<?= stripslashes($pagina->pagina_nome) ?>">
+											<input type="hidden" name="servico_status" value="0">
+											<input type="hidden" name="servico_pagina" style="text-transform:uppercase" value="<?= stripslashes($pagina->pagina_id) ?>">
+											<input type="hidden" name="servico_profissional" value="A confirmar ou o Profissional que estiver disponível">
+											<button name="submit" type="submit" class="btn btn-primary" id="submit" > Enviar Agendamento</button>
+
+                                        </form>
+										</div>
+									</div>
+									<!--<div align="center" class="a2a_kit a2a_kit_size_32 a2a_default_style">
+									<h2 align="center">Compartilhar</h2>
+									<a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+									<a class="a2a_button_facebook"></a>
+									<a class="a2a_button_twitter"></a>
+									<a class="a2a_button_google_plus"></a>
+									<a class="a2a_button_pinterest"></a>
+									<a class="a2a_button_linkedin"></a>
+									<a class="a2a_button_whatsapp"></a>
+									<a class="a2a_button_email"></a>
+									<a class="a2a_button_google_gmail"></a>
+									</div>
+									<script async src="https://static.addtoany.com/menu/page.js"></script>
+									 AddToAny END -->
+       </div>
+	   <hr/>
+				<div align="center">
+				<p><b><?= $site->site_meta_titulo ?></b></p>
+				<address>
+                    <?= $contatos->contato_endereco ?> <br/><br/>
+                </address>	
+				<p><?= $contatos->contato_telefone1 ?> - <?= $contatos->contato_telefone2 ?></p>
+				</div>
+	   
+
+    </div><!-- /content -->
+
+    <div data-role="panel" id="left-panel" data-display="reveal" data-position="left">
+
+		<?php require_once './menu_esquerdo.php'; ?>
+
+
+    </div><!-- /panel -->
+
+    <div data-role="panel" id="right-panel" data-display="reveal" data-position="right">
+    
+		<?php require_once './menu_direito.php'; ?>
+          <div class="close_loginpopup_button"><a href="#" data-rel="close"><img src="images/icons/white/menu_close.png" alt="" title="" /></a></div>
+          
+    </div><!-- /panel -->
+</div><!-- /page -->
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery.mobile-1.4.5.min.js"></script>
+<script src="js/jquery.validate.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="js/email.js"></script>
+<script type="text/javascript" src="js/jquery.swipebox.js"></script>
+<script src="js/jquery.mobile-custom.js"></script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+#php_flag display_errors off
+#php_value display_errors 0
+
+
+Options -Indexes
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+
+<ifmodule mod_gzip.c="">
+mod_gzip_on       Yes
+mod_gzip_dechunk  Yes
+mod_gzip_item_include file      \.(php?|css|js|php)$
+mod_gzip_item_include handler   ^cgi-script$
+mod_gzip_item_include mime      ^text/.*
+mod_gzip_item_include mime      ^js/x-javascript.*
+mod_gzip_item_exclude mime      ^image/.*
+mod_gzip_item_exclude rspheader ^Content-Encoding:.*gzip.*
+</ifmodule>
+#home
+RewriteRule ^home([a-zA-Z0-9-_/]+)/?$ index.php?pg=$1 [L,QSA]
+RewriteRule ^servico/([a-zA-Z0-9-_/]+)/([a-zA-Z0-9-_/]+)/?$ post.php?id=$2 [L,QSA]
+RewriteRule ^servico([a-zA-Z0-9-_/]+)/?$ posts.php?pg=$1 [L,QSA]
+RewriteRule ^outros([a-zA-Z0-9-_/]+)/?$ outros.php?pg=$1 [L,QSA]
+RewriteRule ^posts([a-zA-Z0-9-_/]+)/?$ posts.php?pg=$1 [L,QSA]
+RewriteRule ^post/([a-zA-Z0-9-_/]+)/([a-zA-Z0-9-_/]+)/?$ post.php?id=$2 [L,QSA]
+RewriteRule ^categoria/([a-zA-Z0-9-_/]+)/([a-zA-Z0-9-_/]+)/?$ categoria.php?id=$2 [L,QSA]
+RewriteRule ^galeria/([a-zA-Z0-9-_/]+)/([a-zA-Z0-9-_/]+)/?$ portfolio.php?id=$2 [L,QSA]
+RewriteRule ^galerias([a-zA-Z0-9-_/]+)/?$ portfolios.php?pg=$1 [L,QSA]
+RewriteRule ^promocao/([a-zA-Z0-9-_/]+)/([a-zA-Z0-9-_/]+)/?$ promocao.php?id=$2 [L,QSA]
+RewriteRule ^promocoes([a-zA-Z0-9-_/]+)/?$ equipe.php?pg=$1 [L,QSA]
+RewriteRule ^resultado([a-zA-Z0-9-_/]+)/?$ busca.php?pg=$1 [L,QSA]
+RewriteRule ^contato([a-zA-Z0-9-_/]+)/?$ contato.php?pg=$1 [L,QSA]
+RewriteRule ^sobre([a-zA-Z0-9-_/]+)/?$ sobre.php?pg=$1 [L,QSA]
+RewriteRule ^financiamento([a-zA-Z0-9-_/]+)/?$ financiamento.php?pg=$1 [L,QSA]
+RewriteRule ^depoimentos([a-zA-Z0-9-_/]+)/?$ depoimentos.php?pg=$1 [L,QSA]
+
+
+#admin
+RewriteRule ^admin/home([a-zA-Z0-9-_/]+)/?$ admin/index.php?pg=$1 [L,QSA]
+RewriteRule ^admin/frontend([a-zA-Z0-9-_/]+)/?$ admin/frontend.php?pg=$1 [L,QSA]
+RewriteRule ^admin/post/comentarios/([a-zA-Z0-9-_/]+)/?$ admin/comentario.php?id=$1 [L,QSA]
+RewriteRule ^admin/promocao/novo([a-zA-Z0-9-_/]+)/?$ admin/cliente_novo.php?pg=$1 [L,QSA]
+RewriteRule ^admin/promocao/editar/([a-zA-Z0-9-_/]+)/?$ admin/cliente_editar.php?id=$1 [L,QSA]
+RewriteRule ^admin/promocao([a-zA-Z0-9-_/]+)/?$ admin/cliente.php?pg=$1 [L,QSA]
+RewriteRule ^admin/cliente/novo([a-zA-Z0-9-_/]+)/?$ admin/servico_novo.php?pg=$1 [L,QSA]
+RewriteRule ^admin/cliente/editar/([a-zA-Z0-9-_/]+)/?$ admin/servico_editar.php?id=$1 [L,QSA]
+RewriteRule ^admin/cliente([a-zA-Z0-9-_/]+)/?$ admin/servico.php?pg=$1 [L,QSA]
+RewriteRule ^admin/servico/novo([a-zA-Z0-9-_/]+)/?$ admin/pagina_novo.php?pg=$1 [L,QSA]
+RewriteRule ^admin/servico/editar/([a-zA-Z0-9-_/]+)/?$ admin/pagina_editar.php?id=$1 [L,QSA]
+RewriteRule ^admin/servico([a-zA-Z0-9-_/]+)/?$ admin/pagina.php?pg=$1 [L,QSA]
+RewriteRule ^admin/categoria/servico([a-zA-Z0-9-_/]+)/?$ admin/area.php?pg=$1 [L,QSA]
+RewriteRule ^admin/galeria/novo([a-zA-Z0-9-_/]+)/?$ admin/portfolio_novo.php?pg=$1 [L,QSA]
+RewriteRule ^admin/galeria/editar/([a-zA-Z0-9-_/]+)/?$ admin/portfolio_editar.php?id=$1 [L,QSA]
+RewriteRule ^admin/galeria([a-zA-Z0-9-_/]+)/?$ admin/portfolio.php?pg=$1 [L,QSA]
+RewriteRule ^admin/categoria/galeria([a-zA-Z0-9-_/]+)/?$ admin/area1.php?pg=$1 [L,QSA]
+RewriteRule ^admin/usuario([a-zA-Z0-9-_/]+)/?$ admin/usuario.php?pg=$1 [L,QSA]
+RewriteRule ^admin/seo([a-zA-Z0-9-_/]+)/?$ admin/site.php?pg=$1 [L,QSA]
+RewriteRule ^admin/social([a-zA-Z0-9-_/]+)/?$ admin/social.php?pg=$1 [L,QSA]
+RewriteRule ^admin/contato([a-zA-Z0-9-_/]+)/?$ admin/contato.php?pg=$1 [L,QSA]
+RewriteRule ^admin/config/email([a-zA-Z0-9-_/]+)/?$ admin/smtp.php?pg=$1 [L,QSA]
+RewriteRule ^admin/icones([a-zA-Z0-9-_/]+)/?$ admin/icone.php?pg=$1 [L,QSA]
+RewriteRule ^admin/logar([a-zA-Z0-9-_/]+)/?$ admin/login.php?pg=$1 [L,QSA]
+RewriteRule ^admin/slide([a-zA-Z0-9-_/]+)/?$ admin/slide.php?pg=$1 [L,QSA]
+RewriteRule ^admin/depoimentos([a-zA-Z0-9-_/]+)/?$ admin/depoimento.php?pg=$1 [L,QSA]
+RewriteRule ^admin/depoimento/novo([a-zA-Z0-9-_/]+)/?$ admin/depoimento_novo.php?pg=$1 [L,QSA]
+RewriteRule ^admin/depoimento/editar/([a-zA-Z0-9-_/]+)/?$ admin/depoimento_editar.php?id=$1 [L,QSA]
+RewriteRule ^admin/horario([a-zA-Z0-9-_/]+)/?$ admin/horario.php?pg=$1 [L,QSA]
+RewriteRule ^admin/profissional([a-zA-Z0-9-_/]+)/?$ admin/profissional.php?pg=$1 [L,QSA]
+RewriteRule ^admin/agenda([a-zA-Z0-9-_/]+)/?$ admin/agenda.php?pg=$1 [L,QSA]
+RewriteRule ^admin/curso/novo([a-zA-Z0-9-_/]+)/?$ admin/curso_novo.php?pg=$1 [L,QSA]
+RewriteRule ^admin/curso/editar/([a-zA-Z0-9-_/]+)/?$ admin/curso_editar.php?id=$1 [L,QSA]
+RewriteRule ^admin/curso([a-zA-Z0-9-_/]+)/?$ admin/curso.php?pg=$1 [L,QSA]
+RewriteRule ^admin/inscricao/novo([a-zA-Z0-9-_/]+)/?$ admin/inscricao_novo.php?pg=$1 [L,QSA]
+RewriteRule ^admin/inscricao/editar/([a-zA-Z0-9-_/]+)/?$ admin/inscricao_editar.php?id=$1 [L,QSA]
+RewriteRule ^admin/inscricao([a-zA-Z0-9-_/]+)/?$ admin/inscricao.php?pg=$1 [L,QSA]
+
+RewriteRule ^admin/unidade/novo([a-zA-Z0-9-_/]+)/?$ admin/unidade_novo.php?pg=$1 [L,QSA]
+RewriteRule ^admin/unidade/editar/([a-zA-Z0-9-_/]+)/?$ admin/unidade_editar.php?id=$1 [L,QSA]
+RewriteRule ^admin/unidade([a-zA-Z0-9-_/]+)/?$ admin/unidade.php?pg=$1 [L,QSA]
+
+RewriteRule ^admin/produto/novo([a-zA-Z0-9-_/]+)/?$ admin/produto_novo.php?pg=$1 [L,QSA]
+RewriteRule ^admin/produto/editar/([a-zA-Z0-9-_/]+)/?$ admin/produto_editar.php?id=$1 [L,QSA]
+RewriteRule ^admin/produto([a-zA-Z0-9-_/]+)/?$ admin/produto.php?pg=$1 [L,QSA]
+RewriteRule ^admin/categoria/produto([a-zA-Z0-9-_/]+)/?$ admin/categoria.php?pg=$1 [L,QSA]
+
+
+
+
+
+
+#admin
+
+
+

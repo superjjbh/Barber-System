@@ -1,0 +1,49 @@
+[20-Oct-2018 06:23:44 UTC] TimThumb Debug line 1144 [0.003568 : 0.000000]: Starting new request from 66.249.85.7 to /teste/srblackbarbearia/thumb.php?h=110&src=images/1529028458.png
+[20-Oct-2018 06:23:44 UTC] TimThumb Debug line 1144 [0.003874 : 0.000266]: Cache was last cleaned more than 86400 seconds ago. Cleaning now.
+[20-Oct-2018 06:23:44 UTC] TimThumb Debug line 1144 [0.004754 : 0.000879]: Local image path is /home2/achiles/public_html/teste/srblackbarbearia/images/1529028458.png
+[20-Oct-2018 09:31:44 UTC] TimThumb Debug line 1144 [0.004689 : 0.000000]: Starting new request from 200.165.248.43 to /teste/srblackbarbearia/thumb.php?h=110&src=images/1529028458.png
+[20-Oct-2018 09:31:44 UTC] TimThumb Debug line 1144 [0.039963 : 0.035244]: Local image path is /home2/achiles/public_html/teste/srblackbarbearia/images/1529028458.png
+[24-Oct-2018 15:47:15 UTC] TimThumb Debug line 1144 [0.000116 : 0.000000]: Starting new request from 177.107.130.146 to /srblack/thumb.php?h=110&src=images/1529028458.png
+[24-Oct-2018 15:47:15 UTC] TimThumb Debug line 1144 [0.000320 : 0.000161]: Cache was last cleaned more than 86400 seconds ago. Cleaning now.
+[24-Oct-2018 15:47:15 UTC] TimThumb Debug line 1144 [0.000636 : 0.000316]: Local image path is /home/u421847002/public_html/srblack/images/1529028458.png
+[24-Oct-2018 15:50:59 UTC] TimThumb Debug line 1144 [0.000167 : 0.000000]: Starting new request from 177.107.130.146 to /srblack/thumb.php?h=110&src=images/1529028458.png
+[24-Oct-2018 15:50:59 UTC] TimThumb Debug line 1144 [0.000599 : 0.000382]: Local image path is /home/u421847002/public_html/srblack/images/1529028458.png
+[24-Oct-2018 15:51:42 UTC] TimThumb Debug line 1144 [0.000152 : 0.000000]: Starting new request from 177.107.130.146 to /srblack/thumb.php?h=110&src=images/1529028458.png
+[24-Oct-2018 15:51:42 UTC] TimThumb Debug line 1144 [0.000538 : 0.000340]: Local image path is /home/u421847002/public_html/srblack/images/1529028458.png
+[24-Oct-2018 16:09:01 UTC] TimThumb Debug line 1144 [0.000165 : 0.000000]: Starting new request from 201.80.186.22 to /srblack/thumb.php?h=110&src=images/1529028458.png
+[24-Oct-2018 16:09:01 UTC] TimThumb Debug line 1144 [0.000599 : 0.000385]: Local image path is /home/u421847002/public_html/srblack/images/1529028458.png
+[24-Oct-2018 16:11:25 UTC] TimThumb Debug line 1144 [0.000112 : 0.000000]: Starting new request from 201.80.186.22 to /srblack/thumb.php?h=110&src=images/1529028458.png
+[24-Oct-2018 16:11:25 UTC] TimThumb Debug line 1144 [0.000443 : 0.000295]: Local image path is /home/u421847002/public_html/srblack/images/1529028458.png
+[24-Oct-2018 18:22:07 UTC] TimThumb Debug line 1144 [0.000112 : 0.000000]: Starting new request from 201.80.186.22 to /srblack/thumb.php?h=110&src=images/1529028458.png
+[24-Oct-2018 18:22:07 UTC] TimThumb Debug line 1144 [0.000424 : 0.000275]: Local image path is /home/u421847002/public_html/srblack/images/1529028458.png
+[26-Oct-2018 18:05:11 UTC] TimThumb Debug line 1144 [0.000147 : 0.000000]: Starting new request from 201.80.186.22 to /srblack/thumb.php?h=110&src=images/1529028458.png
+[26-Oct-2018 18:05:11 UTC] TimThumb Debug line 1144 [0.000389 : 0.000185]: Cache was last cleaned more than 86400 seconds ago. Cleaning now.
+[26-Oct-2018 18:05:11 UTC] TimThumb Debug line 1144 [0.000722 : 0.000331]: Local image path is /home/u421847002/public_html/srblack/images/1529028458.png
+[26-Oct-2018 23:11:46 UTC] TimThumb Debug line 1144 [0.000143 : 0.000000]: Starting new request from 189.104.220.145 to /srblack/thumb.php?h=110&src=images/1529028458.png
+[26-Oct-2018 23:11:46 UTC] TimThumb Debug line 1144 [0.000568 : 0.000376]: Local image path is /home/u421847002/public_html/srblack/images/1529028458.png
+[27-Oct-2018 02:51:13 UTC] TimThumb Debug line 1144 [0.000118 : 0.000000]: Starting new request from 200.165.251.245 to /srblack/thumb.php?h=110&src=images/1529028458.png
+[27-Oct-2018 02:51:13 UTC] TimThumb Debug line 1144 [0.000449 : 0.000292]: Local image path is /home/u421847002/public_html/srblack/images/1529028458.png
+[27-Oct-2018 05:20:38 UTC] TimThumb Debug line 1144 [0.000120 : 0.000000]: Starting new request from 200.165.251.245 to /srblack/thumb.php?h=110&src=images/1529028458.png
+[27-Oct-2018 05:20:38 UTC] TimThumb Debug line 1144 [0.000442 : 0.000280]: Local image path is /home/u421847002/public_html/srblack/images/1529028458.png
+[27-Oct-2018 12:51:46 UTC] TimThumb Debug line 1144 [0.000119 : 0.000000]: Starting new request from 200.165.251.245 to /srblack/thumb.php?h=110&src=images/1529028458.png
+[27-Oct-2018 12:51:46 UTC] TimThumb Debug line 1144 [0.002996 : 0.002816]: Local image path is /home/u421847002/public_html/srblack/images/1529028458.png
+[27-Oct-2018 18:05:49 UTC] TimThumb Debug line 1144 [0.000111 : 0.000000]: Starting new request from 200.165.251.245 to /srblack/thumb.php?h=110&src=images/1529028458.png
+[27-Oct-2018 18:05:49 UTC] TimThumb Debug line 1144 [0.000292 : 0.000146]: Cache was last cleaned more than 86400 seconds ago. Cleaning now.
+[27-Oct-2018 18:05:49 UTC] TimThumb Debug line 1144 [0.022783 : 0.022499]: Local image path is /home/u421847002/public_html/srblack/images/1529028458.png
+[27-Oct-2018 19:58:58 UTC] TimThumb Debug line 1144 [0.000094 : 0.000000]: Starting new request from 200.165.251.245 to /srblack/thumb.php?h=110&src=images/1529028458.png
+[27-Oct-2018 19:58:58 UTC] TimThumb Debug line 1144 [0.000379 : 0.000244]: Local image path is /home/u421847002/public_html/srblack/images/1529028458.png
+[27-Oct-2018 20:37:44 UTC] TimThumb Debug line 1144 [0.000125 : 0.000000]: Starting new request from 191.249.132.188 to /srblack/thumb.php?h=110&src=images/1529028458.png
+[27-Oct-2018 20:37:44 UTC] TimThumb Debug line 1144 [0.000485 : 0.000319]: Local image path is /home/u421847002/public_html/srblack/images/1529028458.png
+[30-Oct-2018 03:27:10 UTC] TimThumb Debug line 1144 [0.000141 : 0.000000]: Starting new request from 200.165.251.245 to /barbersystem/thumb.php?h=110&src=images/1529028458.png
+[30-Oct-2018 03:27:10 UTC] TimThumb Debug line 1144 [0.000493 : 0.000310]: Local image path is /home/u421847002/public_html/barbersystem/images/1529028458.png
+[30-Oct-2018 03:45:09 UTC] TimThumb Debug line 1144 [0.000108 : 0.000000]: Starting new request from 200.165.251.245 to /barbersystem/thumb.php?h=110&src=images/1529028458.png
+[30-Oct-2018 03:45:09 UTC] TimThumb Debug line 1144 [0.000418 : 0.000256]: Local image path is /home/u421847002/public_html/barbersystem/images/1529028458.png
+[01-Nov-2018 09:43:14 UTC] TimThumb Debug line 1144 [0.000127 : 0.000000]: Starting new request from 191.19.15.66 to /barbersystem/thumb.php?h=110&src=images/1529028458.png
+[01-Nov-2018 09:43:14 UTC] TimThumb Debug line 1144 [0.023666 : 0.023514]: Cache was last cleaned more than 86400 seconds ago. Cleaning now.
+[01-Nov-2018 09:43:14 UTC] TimThumb Debug line 1144 [0.037287 : 0.013613]: Local image path is /home/u421847002/public_html/barbersystem/images/1529028458.png
+[02-Nov-2018 21:58:53 UTC] TimThumb Debug line 1144 [0.000149 : 0.000000]: Starting new request from 191.177.182.189 to /barbersystem/thumb.php?h=110&src=images/1529028458.png
+[02-Nov-2018 21:58:53 UTC] TimThumb Debug line 1144 [0.006005 : 0.005818]: Cache was last cleaned more than 86400 seconds ago. Cleaning now.
+[02-Nov-2018 21:58:53 UTC] TimThumb Debug line 1144 [0.008092 : 0.002086]: Local image path is /home/u421847002/public_html/barbersystem/images/1529028458.png
+[06-Nov-2018 13:16:48 UTC] TimThumb Debug line 1144 [0.000147 : 0.000000]: Starting new request from 177.143.122.1 to /barbersystem/thumb.php?h=110&src=images/1529028458.png
+[06-Nov-2018 13:16:48 UTC] TimThumb Debug line 1144 [0.016222 : 0.016038]: Cache was last cleaned more than 86400 seconds ago. Cleaning now.
+[06-Nov-2018 13:16:48 UTC] TimThumb Debug line 1144 [0.035813 : 0.019595]: Local image path is /home/u421847002/public_html/barbersystem/images/1529028458.png

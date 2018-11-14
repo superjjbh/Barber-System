@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" version="2.0.28" id="barbersystemapp"
+    >
+
+    <name>Barber System</name>
+
+    <description>
+    Barber System
+    </description>
+
+    <author href="http://jmtecnologiabh.com.br"  
+        email="contato@jmtecnologiabh.com.br"> JM Tecnologia
+    </author>
+
+    <preference name="phonegap-version" value="cli-6.5.0" />
+
+	<icon src="icon.png" />
+	
+	<preference name="stay-in-webview" value="true" />
+
+    <access origin="*" browserOnly="true" subdomains="true" />
+
+	<access origin="*" />
+
+	<!-- Enable requests to content: URLs -->
+	<access origin="content:///*" />
+
+	<plugin name="cordova-plugin-whitelist" source="npm" />
+
+    <content src="index.html" />
+
+	<!-- The above is equivalent to these three declarations -->
+	<allow-navigation href="http://*/*" />
+	<allow-navigation href="https://*/*" />
+	<allow-navigation href="data:*" />
+	
+		<!-- Allow SMS links to open messaging app -->
+	<allow-intent href="sms:*" />
+
+	<!-- Allow tel: links to open the dialer -->
+	<allow-intent href="tel:*" />
+
+	<!-- Allow geo: links to open maps -->
+	<allow-intent href="geo:*" />
+	
+	<allow-intent href="intent:*" />
+
+	<!-- Allow all unrecognized URLs to open installed apps
+		 *NOT RECOMMENDED* -->
+	<allow-intent href="*" />	
+	
+	<preference name="debuggable" value="false" />
+	<preference name="permissions"                value="none"/>
+    <preference name="target-device"              value="universal"/>
+	<preference name="orientation" value="portrait" />
+	
+	<platform name="android">
+		<preference name="AndroidLaunchMode" value="singleTop"/>
+		<preference name="android-minSdkVersion" value="17" />
+		<preference name="android-targetSdkVersion" value="26"/>
+		<preference name="SplashScreen" value="screen"/>
+		<plugin name="cordova-plugin-splashscreen" spec="3.2.2"/>
+		<icon src="icon.png" />
+		<splash src="splash.png" />
+		<icon src="icon.png" density="ldpi" />
+		<icon src="icon.png" density="mdpi" />
+		<icon src="icon.png" density="hdpi" />
+		<icon src="icon.png" density="xhdpi" />
+		<preference name="StatusBarBackgroundColor" value="#A38236"/>
+		<preference name="StatusBarStyle" value="lightcontent" />
+	</platform>
+
+	<!-- Plataforma Android -->
+	<engine name="android" />
+
+
+</widget>

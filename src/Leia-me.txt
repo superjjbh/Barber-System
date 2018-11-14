@@ -1,0 +1,9 @@
+﻿As tabelas devem ser criadas a partir do arquivo table.sql localizado na pasta src importe o arquivo para seu phpmyadmin
+ após criar o banco, configure os dados de acesso no arquivo database/DB.php nome do banco de dados, senha, usuário etc...   
+
+Painel Admin
+seattle/admin/ ou  site.com.br/admin/ 
+
+login: admin
+senha: admin
+
