@@ -1,0 +1,1 @@
+ALTER TABLE `servico` ADD `servico_valor` DECIMAL(10,2) NULL AFTER `servico_adicional4`, ADD `servico_valor_adicional` DECIMAL(10,2) NULL AFTER `servico_valor`, ADD `servico_valor_total` DECIMAL(10,2) NULL AFTER `servico_valor_adicional`;
